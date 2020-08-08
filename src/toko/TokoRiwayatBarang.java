@@ -645,7 +645,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }
 
     public void isCek() {
-        if (!DaftarMenu.TRIWAYAT_BARANG.equals("")) {
+        if (!DaftarMenu.TRIWAYAT_BARANG.equals("") || DaftarMenu.ADMIN_UTAMA.equals(DaftarMenu.TADMIN_UTAMA)) {
             BtnPrint.setEnabled(true);
         } else {
             BtnPrint.setEnabled(false);

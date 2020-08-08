@@ -12,7 +12,6 @@ import usu.widget.util.WidgetUtilities;
  * @author khanzasoft
  */
 public class SIMRSKhanza {
-
     /**
      * @param args the command line arguments
      */

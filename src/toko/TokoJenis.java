@@ -775,7 +775,8 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     }
 
     public void isCek() {
-        if (!DaftarMenu.TTOKO_JENIS.equals("")) {
+
+        if (!DaftarMenu.TTOKO_JENIS.equals("") || DaftarMenu.ADMIN_UTAMA.equals(DaftarMenu.TADMIN_UTAMA)) {
             BtnSimpan.setEnabled(true);
             BtnHapus.setEnabled(true);
             BtnEdit.setEnabled(true);

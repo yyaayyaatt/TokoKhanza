@@ -1571,10 +1571,12 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             ppCetakNota.setEnabled(false);
             ppHapus.setEnabled(false);
         }
-//        if (akses.getkode().equals("Admin Utama")) {
-//            ppHapus.setEnabled(true);
-//        } else {
-//            ppHapus.setEnabled(false);
-        
+        if (DaftarMenu.ADMIN_UTAMA.equals(DaftarMenu.TADMIN_UTAMA)) {
+            ppHapus.setEnabled(true);
+            ppCetakNota.setEnabled(true);
+        } else {
+            ppCetakNota.setEnabled(false);
+            ppHapus.setEnabled(false);
+        }
     }
 }

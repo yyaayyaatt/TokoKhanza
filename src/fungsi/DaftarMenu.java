@@ -38,7 +38,7 @@ public class DaftarMenu {
     public static String TOKO_JENIS = "toko_jenis";
     public static String SET_HARGA = "set_harga";
     
-    public static String TADMIN_UTAMA = "admin_utama";
+    public static String TADMIN_UTAMA = "";
     public static String TBARANG = "";
     public static String TBAYAR_PESANAN = "";
     public static String TBAYAR_PIUTANG = "";

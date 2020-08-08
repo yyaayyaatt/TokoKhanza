@@ -1002,7 +1002,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 sukses = true;
                 if (Sequel.menyimpantf2("tokopenjualan", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "No.Nota", 15, new String[]{
                     NoNota.getText(), Valid.SetTgl(Tgl.getSelectedItem() + ""), kdptg.getText(), kdmem.getText(), nmmem.getText(), catatan.getText(), Jenisjual.getSelectedItem().toString(),
-                    ongkir + "", besarppn + "", Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?", CmbAkun.getSelectedItem().toString()), tagihanppn + "", CmbAkun.getSelectedItem().toString(), kdtoko.getText(),Bayar.getText(),(bayar - tagihanppn)+""
+                    ongkir + "", besarppn + "", Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?", CmbAkun.getSelectedItem().toString()), tagihanppn + "", CmbAkun.getSelectedItem().toString(), kdtoko.getText(), Bayar.getText(), (bayar - tagihanppn) + ""
                 }) == true) {
                     System.out.println("tokopenjualan");
                     isSimpan();
@@ -1010,7 +1010,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     autoNomor();
                     if (Sequel.menyimpantf2("tokopenjualan", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "No.Nota", 15, new String[]{
                         NoNota.getText(), Valid.SetTgl(Tgl.getSelectedItem() + ""), kdptg.getText(), kdmem.getText(), nmmem.getText(), catatan.getText(), Jenisjual.getSelectedItem().toString(),
-                        ongkir + "", besarppn + "", Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?", CmbAkun.getSelectedItem().toString()), tagihanppn + "", CmbAkun.getSelectedItem().toString(), kdtoko.getText(),Bayar.getText(),(bayar - tagihanppn)+""
+                        ongkir + "", besarppn + "", Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?", CmbAkun.getSelectedItem().toString()), tagihanppn + "", CmbAkun.getSelectedItem().toString(), kdtoko.getText(), Bayar.getText(), (bayar - tagihanppn) + ""
                     }) == true) {
                         System.out.println("tokopenjualan2");
                         isSimpan();
@@ -1633,31 +1633,38 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         autoNomor();
         Ongkir.setText("0");
         TCari.requestFocus();
+        kdptg.setEditable(false);
+        BtnPtg.setEnabled(false);
+        if (DaftarMenu.ADMIN_UTAMA.equals(DaftarMenu.TADMIN_UTAMA)) {
+            kdptg.setEditable(true);
+            BtnPtg.setEnabled(true);
+            BtnSimpan.setEnabled(true);
+            BtnTambah.setEnabled(true);
+            BtnNota.setVisible(true);
+        } else {
             kdptg.setEditable(false);
             BtnPtg.setEnabled(false);
-            if (!DaftarMenu.TPENJUALAN.equals("")) {
-                BtnSimpan.setEnabled(true);
-            } else {
-                BtnSimpan.setEnabled(false);
-            }
-            if (!DaftarMenu.TBARANG.equals("")) {
-                BtnTambah.setEnabled(true);
-            } else {
-                BtnTambah.setEnabled(false);
-            }
-            kdptg.setText(Toko.nip);
-            Sequel.cariIsi("select nama from petugas where nip=?", nmptg, kdptg.getText());
-        
+            BtnSimpan.setEnabled(false);
+            BtnTambah.setEnabled(false);
+            BtnNota.setVisible(false);
+        }
+
+        if (!DaftarMenu.TPENJUALAN.equals("")) {
+            BtnSimpan.setEnabled(true);
+        } else {
+            BtnSimpan.setEnabled(false);
+        }
+        if (!DaftarMenu.TBARANG.equals("")) {
+            BtnTambah.setEnabled(true);
+        } else {
+            BtnTambah.setEnabled(false);
+        }
+        kdptg.setText(Toko.nip);
+        Sequel.cariIsi("select nama from petugas where nip=?", nmptg, kdptg.getText());
+
         if (Sequel.cariIsi("select tampilkan_tombol_nota_toko from set_nota").equals("Yes")) {
             BtnNota.setVisible(true);
-        } 
-//        else {
-//            if (akses.getkode().equals("Admin Utama")) {
-//                BtnNota.setVisible(true);
-//            } else {
-//                BtnNota.setVisible(false);
-//            }
-//        }
+        }
     }
 
     public void autoNomor() {

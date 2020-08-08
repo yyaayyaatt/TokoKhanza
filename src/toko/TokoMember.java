@@ -970,7 +970,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     public void isCek(){
-        if (!DaftarMenu.TMEMBER.equals("")) {
+        if (!DaftarMenu.TMEMBER.equals("") || DaftarMenu.ADMIN_UTAMA.equals(DaftarMenu.TADMIN_UTAMA)) {
         BtnSimpan.setEnabled(true);
         BtnHapus.setEnabled(true);
         BtnEdit.setEnabled(true);

@@ -851,7 +851,7 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
     }
 
     public void isCek() {
-        if (!DaftarMenu.TSTOK_OPNAME.equals("")) {
+        if (!DaftarMenu.TSTOK_OPNAME.equals("") || DaftarMenu.ADMIN_UTAMA.equals(DaftarMenu.TADMIN_UTAMA)) {
             BtnHapus.setEnabled(true);
             BtnPrint.setEnabled(true);
         } else {

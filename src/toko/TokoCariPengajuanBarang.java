@@ -62,16 +62,24 @@ public class TokoCariPengajuanBarang extends javax.swing.JDialog {
 
         for (i = 0; i < 5; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
-            if (i == 0) {
-                column.setPreferredWidth(70);
-            } else if (i == 1) {
-                column.setPreferredWidth(350);
-            } else if (i == 2) {
-                column.setPreferredWidth(100);
-            } else if (i == 3) {
-                column.setPreferredWidth(140);
-            } else if (i == 4) {
-                column.setPreferredWidth(200);
+            switch (i) {
+                case 0:
+                    column.setPreferredWidth(70);
+                    break;
+                case 1:
+                    column.setPreferredWidth(350);
+                    break;
+                case 2:
+                    column.setPreferredWidth(100);
+                    break;
+                case 3:
+                    column.setPreferredWidth(140);
+                    break;
+                case 4:
+                    column.setPreferredWidth(200);
+                    break;
+                default:
+                    break;
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1136,6 +1144,20 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 
     public void isCek() {
         TCari.requestFocus();
+        if (DaftarMenu.ADMIN_UTAMA.equals(DaftarMenu.TADMIN_UTAMA)) {
+            BtnPrint.setEnabled(true);
+            ppHapus.setEnabled(true);
+            ppProsesPengajuan.setEnabled(true);
+            ppDitolak.setEnabled(true);
+            ppDisetujui.setEnabled(true);
+        } else {
+            BtnPrint.setEnabled(false);
+            ppHapus.setEnabled(false);
+            ppProsesPengajuan.setEnabled(false);
+            ppDitolak.setEnabled(false);
+            ppDisetujui.setEnabled(false);
+        }
+
         if (!DaftarMenu.TPENGAJUAN_BARANG.equals("")) {
             BtnPrint.setEnabled(true);
             ppHapus.setEnabled(true);

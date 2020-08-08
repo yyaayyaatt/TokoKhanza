@@ -1513,6 +1513,17 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         kdptg.setEditable(false);
         btnPetugas.setEnabled(false);
         kdptg.setText(Toko.nip);
+        if (DaftarMenu.ADMIN_UTAMA.equals(DaftarMenu.TADMIN_UTAMA)) {
+            kdptg.setEditable(true);
+            btnPetugas.setEnabled(true);
+            BtnSimpan.setEnabled(true);
+            BtnTambah.setEnabled(true);
+        } else {
+            kdptg.setEditable(false);
+            btnPetugas.setEnabled(false);
+            BtnSimpan.setEnabled(false);
+            BtnTambah.setEnabled(false);
+        }
         if (!DaftarMenu.TSURAT_PEMESANAN.equals("")) {
             BtnSimpan.setEnabled(true);
         } else {

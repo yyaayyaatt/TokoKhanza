@@ -10,6 +10,7 @@
  */
 package toko;
 
+import fungsi.DaftarMenu;
 import keuangan.*;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
@@ -1220,12 +1221,22 @@ private void BtnSeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }
 
     public void isCek() {
-        BtnSimpan.setEnabled(true);
-        BtnHapus.setEnabled(true);
-        BtnPrint.setEnabled(true);
-//        BtnSimpan.setEnabled(akses.gettoko_bayar_piutang());
-//        BtnHapus.setEnabled(akses.gettoko_bayar_piutang());
-//        BtnPrint.setEnabled(akses.gettoko_bayar_piutang());
+        if (DaftarMenu.BAYAR_PIUTANG.equals(DaftarMenu.TBAYAR_PIUTANG)) {
+            btnAktif(true);
+        } else {
+            btnAktif(false);
+        }
+        if (DaftarMenu.ADMIN_UTAMA.equals(DaftarMenu.TADMIN_UTAMA)) {
+            btnAktif(true);
+        } else {
+            btnAktif(false);
+        }
+    }
+
+    private void btnAktif(Boolean b) {
+        BtnSimpan.setEnabled(b);
+        BtnHapus.setEnabled(b);
+        BtnPrint.setEnabled(b);
     }
 
     private void isForm() {

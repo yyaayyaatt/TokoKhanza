@@ -1269,6 +1269,18 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         TCari.requestFocus();
         tppn.setText("10");
         Meterai.setText("0");
+        if(DaftarMenu.ADMIN_UTAMA.equals(DaftarMenu.TADMIN_UTAMA)){
+            kdptg.setEditable(true);
+            btnPetugas.setEnabled(true);
+            kdptg.setText(Toko.nip);
+            BtnSimpan.setEnabled(true);
+            BtnTambah.setEnabled(true);
+        }else{
+            kdptg.setEditable(false);
+            btnPetugas.setEnabled(false);
+            BtnSimpan.setEnabled(false);
+            BtnTambah.setEnabled(false);
+        }
         if (!DaftarMenu.TPENGADAAN_BARANG.equals("")) {
             kdptg.setEditable(true);
             btnPetugas.setEnabled(true);

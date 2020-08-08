@@ -1278,7 +1278,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }
 
     public void isCek() {
-        if (!DaftarMenu.TSURAT_PEMESANAN.equals("")) {
+        if (!DaftarMenu.TSURAT_PEMESANAN.equals("") || DaftarMenu.ADMIN_UTAMA.equals(DaftarMenu.TADMIN_UTAMA)) {
             BtnPrint.setEnabled(true);
             ppHapus.setEnabled(true);
             ppDatang.setEnabled(true);

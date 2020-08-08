@@ -1385,34 +1385,43 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         Ongkir.setText("0");
         UangMuka.setText("0");
         TCari.requestFocus();
+        kdptg.setEditable(false);
+        BtnPtg.setEnabled(false);
+        if (DaftarMenu.ADMIN_UTAMA.equals(DaftarMenu.TADMIN_UTAMA)) {
+            kdptg.setEditable(true);
+            BtnPtg.setEnabled(true);
+            BtnSimpan.setEnabled(true);
+            BtnTambah.setEnabled(true);
+        } else {
             kdptg.setEditable(false);
             BtnPtg.setEnabled(false);
-            if (!DaftarMenu.TPIUTANG_HARIAN.equals("")) {
-                BtnSimpan.setEnabled(true);
-            } else {
-                BtnSimpan.setEnabled(false);
-            }
-            if (!DaftarMenu.TBARANG.equals("")) {
-                BtnTambah.setEnabled(true);
-            } else {
+            BtnSimpan.setEnabled(false);
+            BtnTambah.setEnabled(false);
+        }
+        if (!DaftarMenu.TPIUTANG_HARIAN.equals("")) {
+            BtnSimpan.setEnabled(true);
+        } else {
+            BtnSimpan.setEnabled(false);
+        }
+        if (!DaftarMenu.TBARANG.equals("")) {
+            BtnTambah.setEnabled(true);
+        } else {
 
-                BtnTambah.setEnabled(false);
-            }
-            kdptg.setText(Toko.nip);
-            Sequel.cariIsi("select nama from petugas where nip=?", nmptg, kdptg.getText());
+            BtnTambah.setEnabled(false);
+        }
+        kdptg.setText(Toko.nip);
+        Sequel.cariIsi("select nama from petugas where nip=?", nmptg, kdptg.getText());
 
-            if (Sequel.cariIsi("select tampilkan_tombol_nota_toko from set_nota").equals("Yes")) {
+        if (Sequel.cariIsi("select tampilkan_tombol_nota_toko from set_nota").equals("Yes")) {
+            BtnNota.setVisible(true);
+        } else {
+            if (DaftarMenu.ADMIN_UTAMA.equals(DaftarMenu.TADMIN_UTAMA)) {
                 BtnNota.setVisible(true);
             } else {
-                if (Toko.nip.equals("Admin Utama")) {
-                    BtnNota.setVisible(true);
-                } else {
-                    BtnNota.setVisible(false);
-                }
+                BtnNota.setVisible(false);
             }
         }
-    
-    
+    }
 
     public void autoNomor() {
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(nota_piutang,5),signed)),0) from tokopiutang where tgl_piutang='" + Valid.SetTgl(Tgl.getSelectedItem() + "") + "' ",
@@ -1427,7 +1436,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                     tabMode.getValueAt(i, 11).toString(), tabMode.getValueAt(i, 0).toString(), tabMode.getValueAt(i, 6).toString(),
                     tabMode.getValueAt(i, 7).toString(), tabMode.getValueAt(i, 8).toString(), tabMode.getValueAt(i, 9).toString()
                 }) == true) {
-                    Trackbarang.catatRiwayat(tabMode.getValueAt(i, 1).toString(), 0, Valid.SetAngka(tabMode.getValueAt(i, 0).toString()), "Piutang",Toko.nip, "Simpan");
+                    Trackbarang.catatRiwayat(tabMode.getValueAt(i, 1).toString(), 0, Valid.SetAngka(tabMode.getValueAt(i, 0).toString()), "Piutang", Toko.nip, "Simpan");
                     Sequel.mengedit("tokobarang", "kode_brng=?", "stok=stok-?", 2, new String[]{
                         tbObat.getValueAt(i, 0).toString(), tbObat.getValueAt(i, 1).toString()
                     });

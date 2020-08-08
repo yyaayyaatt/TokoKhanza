@@ -69,24 +69,36 @@ public class TokoCariPemesanan extends javax.swing.JDialog {
 
         for (int i = 0; i < 9; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
-            if (i == 0) {
-                column.setPreferredWidth(100);
-            } else if (i == 1) {
-                column.setPreferredWidth(200);
-            } else if (i == 2) {
-                column.setPreferredWidth(150);
-            } else if (i == 3) {
-                column.setPreferredWidth(35);
-            } else if (i == 4) {
-                column.setPreferredWidth(90);
-            } else if (i == 5) {
-                column.setPreferredWidth(90);
-            } else if (i == 6) {
-                column.setPreferredWidth(50);
-            } else if (i == 7) {
-                column.setPreferredWidth(90);
-            } else if (i == 8) {
-                column.setPreferredWidth(100);
+            switch (i) {
+                case 0:
+                    column.setPreferredWidth(100);
+                    break;
+                case 1:
+                    column.setPreferredWidth(200);
+                    break;
+                case 2:
+                    column.setPreferredWidth(150);
+                    break;
+                case 3:
+                    column.setPreferredWidth(35);
+                    break;
+                case 4:
+                    column.setPreferredWidth(90);
+                    break;
+                case 5:
+                    column.setPreferredWidth(90);
+                    break;
+                case 6:
+                    column.setPreferredWidth(50);
+                    break;
+                case 7:
+                    column.setPreferredWidth(90);
+                    break;
+                case 8:
+                    column.setPreferredWidth(100);
+                    break;
+                default:
+                    break;
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1325,12 +1337,14 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         if (!DaftarMenu.TBAYAR_PESANAN.equals("")) {
             ppBayar.setEnabled(true);
         }
-//        
-//        if (akses.getkode().equals("Admin Utama")) {
-//            ppHapus.setEnabled(true);
-//        } else {
-//            ppHapus.setEnabled(false);
-//        }
+        
+        if (DaftarMenu.ADMIN_UTAMA.equals(DaftarMenu.TADMIN_UTAMA)) {
+            ppHapus.setEnabled(true);
+            BtnPrint.setEnabled(true);
+            ppBayar.setEnabled(true);
+        } else {
+            ppHapus.setEnabled(false);
+        }
     }
 
 }

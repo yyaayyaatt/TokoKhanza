@@ -1222,7 +1222,9 @@ public class frmUtama extends javax.swing.JFrame {
         jSeparator14.setPreferredSize(new java.awt.Dimension(0, 1));
         jMenu1.add(jSeparator14);
 
+        menuItemTrack.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         menuItemTrack.setText("Track SQL");
+        menuItemTrack.setEnabled(false);
         menuItemTrack.setName("menuItemTrack"); // NOI18N
         menuItemTrack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1494,6 +1496,7 @@ public class frmUtama extends javax.swing.JFrame {
         switch (BtnLog.getText().trim()) {
             case "Log Out":
                 MnGantiPassword.setEnabled(false);
+                menuItemTrack.setEnabled(false);
                 edAdmin.setText("");
                 edPwd.setText("");
                 BtnLog.setText("Log In");
@@ -2252,8 +2255,10 @@ public class frmUtama extends javax.swing.JFrame {
                         }
                         if (rs.getString("id_module").equals(DaftarMenu.ADMIN_UTAMA)) {
                             visibleMenu(true);
+                            DaftarMenu.TADMIN_UTAMA = rs.getString("id_module");
                         }
                         MnGantiPassword.setEnabled(false);
+                        menuItemTrack.setEnabled(true);
 
                         DlgLogin.dispose();
                         BtnLog.setText("Log Out");
